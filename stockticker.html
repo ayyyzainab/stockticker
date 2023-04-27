@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My MongoDB Script</title>
+  </head>
+  <body>
+    <h1>My MongoDB Script</h1>
+    <script>
+      const MongoClient = require('mongodb').MongoClient;
+      const url = "mongodb+srv://nosqlpractice.gfa9bh0.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+
+      MongoClient.connect(url, function(err, db) 
+      {
+          if(err) { return console.log(err); return;}
+          var dbo = db.db("library");
+          var collection = dbo.collection('companies');
+          console.log("Success!");
+
+          rows.forEach((row) => {
+            const [name, ticker, price] = row.split(',');
+            collection.insertOne(
+            {          
+              name,
+              ticker,
+              price: parseFloat(price),
+            });
+          });
+
+          db.close();
+      });
+    </script>
+  </body>
+</html>
