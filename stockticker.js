@@ -1,23 +1,30 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://nosqlpractice.gfa9bh0.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
 
-MongoClient.connect(url, function(err, db) 
-{
-    if(err) { return console.log(err); return;}
-    var dbo = db.db("library");
-    var collection = dbo.collection('companies');
-    console.log("Success!");
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/companies');
+const mongoose = require('mongoose');
 
-    rows.forEach((row) => {
-      const [name, ticker, price] = row.split(',');
-      collection.insertOne(
-      {          
-        name,
-        ticker,
-        price: parseFloat(price),
-      });
-      });
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/companies');
+
+  if(err) { return console.log(err); return;}
+  var dbo = db.db("library");
+  var collection = dbo.collection('companies');
+  console.log("Success!");
+
+  rows.forEach((row) => {
+    const [name, ticker, price] = row.split(',');
+    collection.insertOne(
+    {          
+      name,
+      ticker,
+      price: parseFloat(price),
+    });
+    });
 
     db.close();
-});
+  }
+
 
