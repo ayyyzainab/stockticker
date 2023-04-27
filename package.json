@@ -1,10 +1,10 @@
 {
-  "name": "helloapp",
+  "name": "stock1",
   "version": "1.0.0",
   "description": "node app ",
-  "main": "hello_app.js",
+  "main": "stock1.js",
   "scripts": {
-  "start": "node hello_app.js"
+  "start": "node stock1.js"
 },
   "repository": {
   "type": "git",
