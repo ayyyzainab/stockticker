@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "csv-parse": "^5.3.8",
-    "formidable": "^2.1.1"
+    "formidable": "^2.1.1",
+    "mongodb": "^4.1.1"
   }
 }
